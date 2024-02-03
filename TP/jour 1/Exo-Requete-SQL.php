@@ -22,6 +22,7 @@ FROM article
 WHERE article.quantite_stock > 100";
 
 // liste des commandes  ( numero de facture , date  , num_client ) passées en janvier 2023
+
 // Le résultat sera trié par numéro de commande :
 
 $sql="SELECT commandes.num_commande, commandes.date_commande, commandes.num_client
@@ -57,13 +58,15 @@ GROUP BY YEAR(date_commande)";
 
 // Combien d'exemplaires de l'article 1 avons nous vendus
 
-$sql="SELECT SUM(quantite_stock) AS nombre_exemplaires
-FROM article
-WHERE article.num_article = 1";
+$sql="SELECT SUM(num_art=101) AS exemplaires_vendues
+FROM `ligne_commande`";
 
-// Quel client ( numero , nom , prenom) à commandé l'article 27 en 2023
+// Quel client ( numero , nom , prenom) à commandé l'article 207 en 2023
 // (là il faut travailler sur 3 tables )
-
+SELECT clients.nom_client , clients.prenom_client, commandes.date_commande , article.num_article
+FROM `clients` 
+INNER JOIN commandes
+WHERE YEAR(date_commande)=2023;
 
 
 // Quel est le montant de la commande 1237
@@ -78,10 +81,15 @@ WHERE num_commande = 1237";
 
 // quel et le chiffre d'affaire par année
 
-// quel le chiffre  d'affaire par client
+
+// quel le chiffre d'affaire par client
+
 
 // quels sont les 3 meilleurs clients (LIMIT )
 
 
+
 // liste des articles ( nom de l'article et la quantité ) achetés par le client  Meyer Julien
+
+
 ?>
